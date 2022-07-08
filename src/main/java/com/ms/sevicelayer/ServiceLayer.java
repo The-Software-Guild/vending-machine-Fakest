@@ -14,4 +14,5 @@ public interface ServiceLayer {
     void updateItem() throws VendingMachinePersistenceException;
     BigDecimal getSessionWallet();
     BigDecimal addToWallet(BigDecimal value);
+    String getChange();
 }

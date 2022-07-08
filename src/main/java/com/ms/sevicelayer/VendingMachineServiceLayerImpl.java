@@ -4,6 +4,7 @@ import com.ms.dao.InsufficientFundsException;
 import com.ms.dao.ItemEmptyException;
 import com.ms.dao.VendingMachineDao;
 import com.ms.dao.VendingMachinePersistenceException;
+import com.ms.dto.Change;
 import com.ms.dto.Item;
 
 import java.math.BigDecimal;
@@ -41,9 +42,10 @@ public class VendingMachineServiceLayerImpl implements ServiceLayer{
         }
         item.setQuantity(item.getQuantity()-1);
         vendingMachineDao.updateItem(item);
+        wallet = wallet.subtract(item.getPrice());
         return item;
-
     }
+
 
     @Override
     public void updateItem() throws VendingMachinePersistenceException {
@@ -58,5 +60,11 @@ public class VendingMachineServiceLayerImpl implements ServiceLayer{
     @Override
     public BigDecimal addToWallet(BigDecimal value) {
         return wallet = wallet.add(value);
+    }
+
+    @Override
+    public String getChange() {
+        String change = Change.getChange(wallet);
+        return change;
     }
 }

@@ -53,4 +53,8 @@ public class VendingMachineView {
     public void displayItem(Item selectedItem) {
         io.print(selectedItem.toString());
     }
+
+    public void DisplayChange(String change) {
+        io.print(change);
+    }
 }

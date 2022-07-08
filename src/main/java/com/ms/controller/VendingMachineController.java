@@ -86,7 +86,7 @@ public class VendingMachineController {
     }
 
     private void returnChange() {
-
+        view.DisplayChange(serviceLayer.getChange());
     }
 
     private void selectItem() throws InsufficientFundsException, VendingMachinePersistenceException, ItemEmptyException {
